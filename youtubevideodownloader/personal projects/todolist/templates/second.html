@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <style>
+        h3{
+            text-align: center;
+            color: red;
+            font-family: sans-serif;
+            font-weight: 50px;
+            font-size: 50px;
+
+        }
+        h3:hover{
+            color: blue;
+        }
+        
+        input{
+            padding: 10px 80px;
+            background-color: aquamarine;
+            font-size: 20px;
+            border-radius: 10px;
+
+        }
+    button{
+        padding: 12px 12px;
+        background-color: orange;
+        border-radius:10px;
+        
+    }
+    div{
+        margin-top: 280px;
+        padding: 5px 20px; 
+        color: white;
+        background-color: black;
+        text-align: center;
+        font-weight: 40px;
+        font-size: 20px;
+    }
+    div1{
+        text-align: center;
+    }
+
+    a{
+        text-decoration: none;
+        color: blueviolet;
+    }
+    a:hover{
+        color: red;
+    }
+    button:hover{
+        background-color: red;
+        color: white;
+    }
+        
+    </style>
+</head>
+<body>
+    <h3>To-Do-list</h3>
+    <div1>
+    <form method="POST">
+        {% csrf_token %}
+    <input type="text" placeholder="enter the task"  name="add_task" style="text-align: center;">
+    <button type="submit" style="text-align: center;">Add Task</button>
+    </form>
+    </div1>
+
+
+
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {{task.task}}
+
+
+                  <a href="{% url 'delete_task' task.id %}" >Delete</a>
+
+        {% empty %}
+        <li>
+            No tasks yet!!!!
+        </li>
+        {% endfor %}
+
+    </ul>
+
+    <div> 
+    <footer>
+        <p>
+            All Copyrights Belongs To &copy; Prasanna Makani
+        </p>
+    </footer>
+    </div>
+</body>
+</html>

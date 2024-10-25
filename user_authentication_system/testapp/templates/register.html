@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: powderblue;
+        }
+        .la{display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            margin-top: 10px;
+ 
+        }
+        button{
+            margin-top: 10px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            background-color: red;
+            color: antiquewhite;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            margin-left: 350px;
+            margin-top: 30px;
+        }
+        button:hover{
+            background-color: green;
+        }
+        input{
+            padding: 10px;
+            width: 70%;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .container{
+            background-color: aliceblue;
+            align-items: center;
+            padding:20px 10px;
+            padding-left: 160px;
+            box-shadow: 0 0 10px;
+            padding-bottom: 70px;
+            padding-top: 50px;
+            padding-left: 30px;
+            margin: 20px auto;
+            border-radius: 10px;
+            margin-left: 60px;
+            margin-right: 30px;
+            margin-top: 40px;
+            padding-bottom: 30px;
+
+            
+        }
+        .big{
+            padding-left: 130px;
+            margin-bottom: 60px;
+        }
+        .d1{
+            padding-left: 80px;
+        }
+        ul{
+            text-align: center;
+            padding-bottom: 10px;
+        }
+        ul li{
+            list-style-type: none;
+            font-size: 20px;
+            font-weight: 30px;
+            color: red;
+            margin-bottom: 30px;
+        }
+
+
+
+    
+        
+
+    </style>
+</head>
+<body>
+    <div class="container">
+    <form action="#" method="POST">
+           {% csrf_token %}
+     <h2 class="big">Registeration Form</h2>
+     <div class="d1">
+    <lable for="email" class="la"> Email:</lable>
+    <input type="email" id="email" name="email" placeholder="enter your email"><br>
+    <lable for="u_name" class="la"> User name:</lable>
+    <input type="text" id="u_name" name="u_name" placeholder="enter your user name"><br>
+    <lable for="pass_word" class="la">Password:</lable>
+    <input type="password" id="pass_word" name="pass_word" placeholder="enter your password"><br>
+     </div>
+    <button type="submit">Submit</button>
+    </form>
+    </div>
+    {% if messages %}
+       <ul>
+        {% for message in messages %}
+          <li> {{ message }}</li> 
+        {% endfor %}  
+       </ul>
+    {% endif %}
+</body>
+</html>

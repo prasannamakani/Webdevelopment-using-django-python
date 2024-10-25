@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    body{
+        margin: 0%;
+        background-color: aqua;
+    }
+    .nav{
+        display: flex;
+        background-color: yellowgreen;
+        
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 0%;
+        
+        padding-top: 0%;
+        
+
+    }
+    .nav .navsep ul li{
+        list-style-type: none;
+    }
+    .nav .navsep ul li a{
+        text-decoration: none;
+        padding-right: 15px;
+        background-color: black;
+        padding: 10px;
+        margin-right: 15px;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .nav .pra{
+        padding-left: 8px;
+        padding-top: 8px;
+    }
+
+    .nav .navsep ul li a:hover{
+        background-color:red ;
+    }
+    .wel{
+        text-align: center;
+        margin-top: 200px;
+    }
+    
+    
+    
+</style>
+
+</head>
+<body>
+    <div class="nav">
+        <div class="pra">
+     <i class="fa-solid fa-circle-user fa-2x"></i></div>
+    <div class="navsep">
+        <ul>
+    <li id="a1" ><a href="/">Log Out</a></li>
+        </ul>
+    </div> 
+</div>
+<div class="wel">
+    <h1 >Welcome! {{ username }}
+    </h1>
+    <h3> Your Email: {{ email }}</h3>
+    </div>
+</body>
+</html>
