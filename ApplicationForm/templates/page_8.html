@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form8</title>
+    <link rel="stylesheet" href="{% static 'css/page_8.css'%}">
+</head>
+<body>.
+    <form id="myform" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <table>
+                <tr>
+                    <td colspan="7"  class="bold">PERSONAL ASSESMENT</td>
+                </tr>
+            <tr><td colspan="7">please put down in five succient points as what you con sider your strengths and weaknesses.</td></tr>
+            <tr>
+                <td colspan="7">strengths</td>
+            </tr>
+            <tr>
+                <td>1.</td>
+                <td><textarea></textarea></td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td><textarea ></textarea></td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td><textarea ></textarea></td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td><textarea ></textarea></td>
+            </tr>
+            <tr>
+                <td>5.</td>
+                <td><textarea ></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="7">weaknesses</td>
+            </tr>
+            <tr>
+                <td>1.</td>
+                <td><textarea ></textarea></td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td><textarea ></textarea></td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td><textarea ></textarea></td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td><textarea ></textarea></td>
+            </tr>
+            <tr>
+                <td>5.</td>
+                <td><textarea></textarea></td>
+            </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="7" class="bold">REFEREES- please give two references of which one should necessarily be from your present work place</td>      
+                </tr>
+                <tr><td>name&designation</td>
+                    <td>current company</td>
+                    <td>address</td>
+                    <td>contact details</td>
+                    <td>no.of Months/yrs of acquaintance</td>
+                </tr>
+                <tr>
+                    <td><textarea name="referees name1"></textarea></td>
+                    <td><textarea name="referees current company1"></textarea></td>
+                    <td><textarea name="referees adderss1"></textarea></td>
+                    <td><textarea name="referees contact1"></textarea></td>
+                    <td><textarea name="referees >no.of Months/yrs of acquaintance1"></textarea></td>
+                </tr>
+                <tr>
+                    <td><textarea name="referees name2"></textarea></td>
+                    <td><textarea name="referees current company2"></textarea></td>
+                    <td><textarea name="referees adderss2"></textarea></td>
+                    <td><textarea name="referees contact2"></textarea></td>
+                    <td><textarea name="referees >no.of Months/yrs of acquaintance2"></textarea></td>
+                </tr>
+            </table>
+            <p class="red">*incase your previous employer has closed operation please mention and provide above names and cantact details of your supervisors in the above fields..</p>
+            <table>
+                <tr>
+                    <td>which sport/hobby/activity provides you immense satifiction? state briefly as to why?</td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea style="height: 200px;" name="sport/hobby"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <div class="lastinformation">
+                <div class="left">
+                    <p>MNJ Software Ver: 1.5</p>
+                </div>
+                <div class="center">
+                    <img src="https://www.mnjsoftware.com/assets/images/logo/logo-blu.png" alt="MNJ Logo">
+                </div>
+                <div class="right">
+                    <p>Page 8 of 9</p>
+                    <p>HR Dept. - FORMS - Application Form.</p>
+                </div>
+              </div>
+
+        </div>
+        <button type="submit" id="hiddenSubmit" style="display: none;"></button>
+    </form>
+    <script>
+        let form = document.getElementById("myform");
+        let textareas = form.querySelectorAll("textarea"); 
+
+textareas.forEach(textarea => {
+    textarea.addEventListener("blur", function() { 
+        let allFilled = true;
+
+        textareas.forEach(txt => {
+            if (txt.value.trim() === "") {
+                allFilled = false;
+            }
+        });
+
+        if (allFilled) {
+            document.getElementById("hiddenSubmit").click(); 
+        }
+    });
+});
+
+       
+   </script>
+    
+</body>
+</html>
+        

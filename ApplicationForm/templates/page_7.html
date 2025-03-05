@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form7</title>
+    <link rel="stylesheet" href="{% static 'css/page_7.css' %}">
+</head>
+<body>
+    <form id="myform" method="post">
+        {% csrf_token %}
+        <div class="container">
+    <p class="bold">please account for any and all gaps in eduction or during tenure</p>
+    <table>
+        <tr>
+            <td>from:</td>
+            <td><input type="number" name="gaps from1"></td>
+            <td>to:</td>
+            <td><input type="number" name="gaps to1"></td>
+            <td>reason:</td>
+            <td><input type="text" name="gaps reason1"></td>
+            <td>compleate address and location:</td>
+            <td><input type="text" name="gaps compleate address and location1"></td>
+        </tr>
+        <tr>
+            <td>from:</td>
+            <td><input type="number" name="gaps from2"></td>
+            <td>to:</td>
+            <td><input type="number" name="gaps to2"></td>
+            <td>reason:</td>
+            <td><input type="text" name="gaps reason2"></td>
+            <td>compleate address and location:</td>
+            <td><input type="text" name="gaps compleate address and location2"></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td colspan="7" class="bold"> organization chart showing your current position in the current assignment</td></tr>
+           <tr> <td><textarea style="width:100%;height:200px;"  name="organization chart showing your current position in the current assignment"></textarea></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="bold"> key responsibities at current assignment</td>
+        </tr>
+        <tr><td><textarea style="width:100%;" name=" key responsibities at current assignment1"></textarea></td></tr>
+        <tr><td><textarea style="width:100%;" name=" key responsibities at current assignment2"></textarea></td></tr>
+        <tr><td><textarea style="width:100%;" name=" key responsibities at current assignment3"></textarea></td></tr>
+        <tr><td><textarea style="width:100%;" name=" key responsibities at current assignment4"></textarea></td></tr>
+    </table>
+    <div class="lastinformation">
+        <div class="left">
+            <p>MNJ Software Ver: 1.5</p>
+        </div>
+        <div class="center">
+            <img src="https://www.mnjsoftware.com/assets/images/logo/logo-blu.png" alt="MNJ Logo">
+        </div>
+        <div class="right">
+            <p>Page 7 of 9</p>
+            <p>HR Dept. - FORMS - Application Form.</p>
+        </div>
+      </div>
+
+    </div>
+    <button type="submit" id="hiddenSubmit" style="display: none;"></button>
+    </form>
+    <script>
+        let form = document.getElementById("myform");
+        let inputs = form.querySelectorAll("input,textarea");
+
+    inputs.forEach(input => {
+        input.addEventListener("blur", function(){ 
+            let allFilled = true;
+            
+            inputs.forEach(inp => {
+                if (inp.value.trim() === "") {
+                    allFilled = false;
+                }
+            });
+
+            if (allFilled) {
+                document.getElementById("hiddenSubmit").click(); 
+            }
+        });
+    });
+       
+   </script>
+    
+</body>
+</html>
+       
+  

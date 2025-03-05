@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form9</title>
+    <link rel="stylesheet" href="{% static 'css/page_9.css' %}">
+</head>
+<body>
+    <form id="myform" method="post">
+        {% csrf_token %}
+        <div class="container">
+
+            <table>
+                <tr>
+                    <td colspan="7">
+                        what are your short term goals?
+                    </td>
+                     </tr>
+                    <tr>
+                        <td><textarea name="short term goals"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            what are your long term goals?
+                        </td>
+                         </tr>
+                        <tr>
+                            <td><textarea name="long term goals"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="bold">have you ever attended an interview at any of the MNJ Software Offices the globe in the last 6 months?yes/no  (if yes,mention the details)</td>
+                           <tr> <td><textarea name="ever attend the mnj software interview "></textarea></td>
+                        </tr>
+            </table>
+            <div class="lastinformation">
+                <div class="left">
+                    <p>MNJ Software Ver: 1.5</p>
+                </div>
+                <div class="center">
+                    <img src="https://www.mnjsoftware.com/assets/images/logo/logo-blu.png" alt="MNJ Logo">
+                </div>
+                <div class="right">
+                    <p>Page 9 of 9</p>
+                    <p>HR Dept. - FORMS - Application Form.</p>
+                </div>
+              </div>
+
+        </div>
+        <button type="submit" id="hiddenSubmit" style="display: none;"></button>
+    </form>
+    <script>
+         let form = document.getElementById("myform");
+        let textareas = form.querySelectorAll("textarea"); 
+
+textareas.forEach(textarea => {
+    textarea.addEventListener("blur", function() { 
+        let allFilled = true;
+
+        textareas.forEach(txt => {
+            if (txt.value.trim() === "") {
+                allFilled = false;
+            }
+        });
+
+        if (allFilled) {
+            document.getElementById("hiddenSubmit").click(); 
+        }
+    });
+});
+       
+   </script>
+    
+</body>
+</html>

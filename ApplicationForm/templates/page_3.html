@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form3</title>
+    <link rel="stylesheet" href="{% static  'css/page_2.css' %}">
+    
+</head>
+<body>
+    <p>SSN NO.(mandatory if studied in USA or Canada):</p>
+    <p class="red">* Please mention last full time degree</p>
+    <form id="myform" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <table><tr>
+                <td colspan="7" class="bold">ADDITIONAL QUALIFICATION/DIPLOMAS/CERTIFICATES/TRAINING</td>
+                </tr>
+                <tr>
+                    <td colspan="7">Please mention any Self learned course/Software/Package</td>
+                </tr>
+                <tr>
+                    <td>Programe</td>
+                    <td>Institute</td>
+                    <td>duration</td>
+                    <td>%</td>
+                    <td>Divition</td>
+                 </tr>
+                 <tr>
+                    <td><input type="text" name="programe1"></td>
+                    <td><input type="text" name="institute1"></td>
+                    <td><input type="date" name="duration1"></td>
+                    <td><input type="text" name="divition1"></td>
+                 </tr>
+                 <tr>
+                    <td><input type="text" name="programe2"></td>
+                    <td><input type="text" name="institute2"></td>
+                    <td><input type="date" name="duration2"></td>
+                    <td><input type="text" name="divition2"></td>
+                 </tr>
+                 <tr>
+                    <td><input type="text" name="programe3"></td>
+                    <td><input type="text" name="institute3"></td>
+                    <td><input type="date" name="duration3"></td>
+                    <td><input type="text" name="divition3"></td>
+                 </tr>
+
+            </table>
+            <table>
+                <tr>
+                    <td colspan="7" class="bold">SEMINARS/TRAININGPROGRAMS ATTENDED</td>
+                </tr>
+                <tr>
+                    <td>S.NO</td>
+                    <td>Seminar /Traning Program</td>
+                    <td>Conducted by</td>
+                    <td>duration</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" name="seminar/traing programe1"></td>
+                    <td><input type="text" name="conducted_by1"></td>
+                    <td><input type="date" name="duration1"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input type="text" name="seminar/traing programe2"></td>
+                    <td><input type="text" name="conducted_by2"></td>
+                    <td><input type="date" name="duration2"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><input type="text" name="seminar/traing programe3"></td>
+                    <td><input type="text" name="conducted_by3"></td>
+                    <td><input type="date" name="duration3"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="7" class="bold">MAJOR ACHIEVEMENTS AND/PUBLICATIONS TO YOUR CREDIT</td>
+                </tr>
+                <tr>
+                    <td>S.NO</td>
+                    <td>Description</td>
+                    <td>Year</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" name="discription1"></td>
+                    <td><input type="number" name="year1"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input type="text" name="discription2"></td>
+                    <td><input type="number" name="year2"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td colspan="7" class="bold">PROJECT INFORMATION(Inascending order give detailsof the recent projects)</td>
+                </tr>
+                <tr>
+                    <td>S.NO</td>
+                    <td>Title</td>
+                    <td>Company</td>
+                    <td>client</td>
+                   
+                </tr>
+                <tr>
+                <td>1</td>
+                <td><input type="text" name="title1"></td>
+                <td><input type="text" name="company1"></td>
+                <td><input type="text" name="client1"></td>
+                
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input type="text" name="title2"></td>
+                    <td><input type="text" name="company2"></td>
+                    <td><input type="text" name="client2"></td>
+                   
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><input type="text" name="title3"></td>
+                        <td><input type="text" name="company3"></td>
+                        <td><input type="text" name="client3"></td>
+                        
+                        </tr>
+                
+            </table>
+            <div class="lastinformation">
+                <div class="left">
+                    <p>MNJ Software Ver: 1.5</p>
+                </div>
+                <div class="center">
+                    <img src="https://www.mnjsoftware.com/assets/images/logo/logo-blu.png" alt="MNJ Logo">
+                </div>
+                <div class="right">
+                    <p>Page 3 of 9</p>
+                    <p>HR Dept. - FORMS - Application Form.</p>
+                </div>
+        </div>
+        <button type="submit" id="hiddenSubmit" style="display: none;"></button>
+    </form>
+    <script>
+         let form = document.getElementById("myform");
+    let inputs = form.querySelectorAll("input");
+
+    inputs.forEach(input => {
+        input.addEventListener("blur", function(){ 
+            let allFilled = true;
+            
+            inputs.forEach(inp => {
+                if (inp.value.trim() === "") {
+                    allFilled = false;
+                }
+            });
+
+            if (allFilled) {
+                document.getElementById("hiddenSubmit").click(); 
+            }
+        });
+    });
+
+
+   </script>
+
+</body>
+</html>

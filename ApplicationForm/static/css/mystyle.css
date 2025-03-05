@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    width: 100%;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+    padding: 10px;
+    margin-left:200px;
+}
+.headline{
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+.instructions ol{
+    line-height: 1.6;
+}
+.instructions ol li{
+    margin-left: 10px;
+}
+#image-box{
+    border: 1px solid black;
+    width:175px;
+    height: 140px;
+    float: right;
+    margin: 10px;
+
+
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+table, th, td {
+    border: 1px solid #ccc;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.lastinformation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+.left, .center, .right {
+    flex: 1;
+    text-align: center;
+}
+.center img {
+    max-height: 50px;
+}
+.left p, .right p {
+    margin: 0;
+}
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;}

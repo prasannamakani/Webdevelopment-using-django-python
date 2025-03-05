@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form4</title>
+    <link rel="stylesheet" href="{% static 'css/page_4.css'%}">
+
+</head>
+<body>
+    <form id="myform" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <table>
+                <tr>
+                    <td colspan="7"class="bold">Please name two contacts who could be friends/co-workers whom you would you like to recommend or employment at <span>MNJ Software</span></td>
+                </tr>
+                <tr>
+                        <td>S.NO</td>
+                        <td>Name</td>
+                        <td>Current company</td>
+                        <td>Email</td>
+                        <td>Telephone</td>
+
+                    </tr> 
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text" name="frnd name1"></td>
+                        <td><input type="text" name="frnd company1"></td>
+                        <td><input type="email" name="frnd emai1"></td>
+                        <td><input type="number" name="frnd nbr"></td>
+                    </tr> 
+                    <tr>
+                        <td>2</td>
+                        <td><input type="text" name="frnd name2"></td>
+                        <td><input type="text" name="frnd company2"></td>
+                        <td><input type="email" name="frnd emai12"></td>
+                        <td><input type="number" name="frnd nbr2"></td>
+                    </tr>                       
+            </table>
+            <table>
+                <tr>
+                    <td colspan="5" style="background-color: lightgray; padding: 20px; line-height: 1.8;" class="special_content">Details of previous employers(starting from your current job,covering up to Last 3 Employments) please attach a copy of <span class="red">your receiving letter/service certicate </span> for this
+
+                    </td>
+                    <tr>
+                        <td>Company Name(1):</td>
+                        <td><input type="text" name="company1"></td>
+                        <td colspan="2">Last Designation held:</td>
+                        <td><input type="text" name="last designation held1"></td>
+                    </tr>
+                    <tr><td>Address(main office and branch where worked):</td>
+                        <td><input type="text" name="Address(main office and branch where worked)1"></td>
+                        <td colspan="2">Telephone:</td>
+                        <td><input type="number" name="telephone1"></td>  
+                    </tr>
+                <tr>
+                    <td>Employment Period:(date,month,year)</td>
+                    <td><input type="date" name="Employment Period:(date,month,year)1"></td>
+                    <td colspan="2">Employee code/Personal No:</td>
+                    <td><input type="number" name="Employee code/Personal No1"></td>
+                    
+                </tr>
+                <tr><td>Name of HR:</td>
+                    <td><input type="text" name="Name of HR1"></td>
+                    <td colspan="2">Contact No.of HR:</td>
+                    <td><input type="number" name="contact no.of HR1"></td>
+                    
+            <tr>
+                <td> Designation&Department of Reporting Manager </td>
+                <td><input type="text" name="Designation&Department of Reporting Manager1"></td>
+                <td colspan="2">Contact no. of Reporting Manager:</td>
+                <td><input type="number" name="Contact no. of Reporting Manager1"></td>
+                
+            </tr>
+            <tr>
+                <td>Name of alternative Reporting manager:</td>
+                <td><input type="text" name="Name of alternative Reporting manager1"></td>
+                <td colspan="2">Contact no.of alternative Reporting manager:</td>
+                <td><input type="number" name="Contact no.of alternative Reporting manager1"></td>
+            </tr>
+            <tr>
+                <td>Designation&Department of alternative Reporting manager:</td>
+                <td><input type="text" name="Designation&Department of alternative Reporting manager1"></td>
+                <td colspan="2">Email id of alternative Reporting manager:</td>
+                <td><input type="email" name="email id of alternative Reporting manager1"></td>
+            </tr>
+            <tr>
+                <td colspan="3">Whether Employment is of permannent or temporary nature-</td>
+                <td><input type="radio" name="Whether Employment is of permannent or temporary nature/permanent1">Permanent</td>
+                <td><input type="radio" name="Whether Employment is of permannent or temporary nature/temporary1">Temporary</td>
+            </tr>
+            <tr>
+                <td>Agency details(if temporary or contractual)</td>
+                <td colspan="7"><textarea style="width:100%;height:200px;" name="Agency details1"> </textarea></td>
+            </tr>
+            <tr>
+                <td>Remuneration(CTC pa)</td>
+                <td><input type="number" name="Remuneration1"></td>
+                <td>Reason(s) for Leaving</td>
+                <td colspan="2"><input type="text" style="width:100%;height:50px;" name="reason for Leaving1"></td>
+            </tr>
+            </table>
+            <div class="lastinformation">
+                <div class="left">
+                    <p>MNJ Software Ver: 1.5</p>
+                </div>
+                <div class="center">
+                    <img src="https://www.mnjsoftware.com/assets/images/logo/logo-blu.png" alt="MNJ Logo">
+                </div>
+                <div class="right">
+                    <p>Page 4 of 9</p>
+                    <p>HR Dept. - FORMS - Application Form.</p>
+                </div>
+        </div>
+        </div>
+        <button type="submit" id="hiddenSubmit" style="display: none;"></button>
+    </form>
+    <script>
+         let form = document.getElementById("myform");
+    let inputs = form.querySelectorAll("input");
+
+    inputs.forEach(input => {
+        input.addEventListener("blur", function(){ 
+            let allFilled = true;
+            
+            inputs.forEach(inp => {
+                if (inp.value.trim() === "") {
+                    allFilled = false;
+                }
+            });
+
+            if (allFilled) {
+                document.getElementById("hiddenSubmit").click(); 
+            }
+        });
+    });
+
+   </script>
+    
+</body>
+</html>

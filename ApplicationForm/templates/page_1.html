@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Form</title>
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+</head>
+<body>
+     <div class="container">
+    <h1>APPLICATION FORM</h1>
+    <p class="headline">Thank you for the interest shown in MNJ Software. Please take a few minutes of your time to fill in the
+        following details to help us understand your technical skills and personal.</p>
+        <div id="image-box"> <input type="file" name="photo" placeholder="Paste Your Passport Size Photograph">
+            </div>
+            <div class="instructions">
+                <p class="headline">Please keep in mind the following when filling up the form:</p>
+                <ol>
+                    <li>Fill in the boxes in the application blank in bold capital letters unless the content is of a
+                        descriptive nature.</li>
+                    <li>Fill in the details according to the format mentioned for the date and day.</li>
+                </ol>
+            </div>
+            <form id="myform" method="post">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td colspan="2">NAME (As in Passport)</td>
+                        <td colspan="4"><input type="text" name="name"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Father's Name:</td>
+                        <td colspan="2"><input type="text" name="fathers_name"></td>
+                    </tr>
+                    <tr>
+                        <td>Nationality:</td>
+                        <td><input type="text" name="nationality"></td>
+                        <td>Social Security Number (if applicable):</td>
+                        <td ><input type="number" name="ssn"></td>
+                    </tr>
+                    <tr>
+                        <td>Sex:</td>
+                        <td><input type="text" name="sex"></td>
+                        <td>Marital Status:</td>
+                        <td><input type="text" name="marital_status"></td>
+                    </tr>
+                    <tr>
+                        <td>PAN Card Number:</td>
+                        <td><input type="text" name="pan_card"></td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth:</td>
+                        <td><input type="date" name="dob"></td>
+                        </tr>
+                        <tr>
+                            <td>Place of Birth:</td>
+                            <td><input type="text" name="place_of_birth"></td>
+                        </tr>
+                        <tr>
+                            <td>ADDRESS</td>
+                            <td>Present Address</td>
+                            <td >Permanent Address</td>
+                        </tr>
+                        <tr>
+                            <td>House No:</td>
+                            <td><input type="number" name="present_house_no"></td>
+                            <td ><input type="number" name="permanent_house_no"></td>
+                        </tr>
+                        <tr>
+                            <td>Locality / City:</td>
+                            <td><input type="text" name="present_city"></td>
+                            <td ><input type="text" name="permanent_city"></td>
+                        </tr>
+                        <tr>
+                            <td>State:</td>
+                            <td><input type="text" name="present_state"></td>
+                            <td ><input type="text" name="permanent_state"></td>
+                        </tr>
+                        <tr>
+                            <td>PIN Code:</td>
+                            <td><input type="number" name="present_pin"></td>
+                            <td ><input type="number" name="permanent_pin"></td>
+                        </tr>
+                        <tr>
+                            <td>Period of Stay:</td>
+                            <td><input type="text" name="present_stay"></td>
+                            <td ><input type="text" name="permanent_stay"></td>
+                        </tr>
+                        <tr>
+                            <td>Telephone:</td>
+                            <td><input type="number" name="present_telephone"></td>
+                            <td ><input type="number" name="permanent_telephone"></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile Phone:</td>
+                            <td><input type="number" name="present_mobile"></td>
+                            <td ><input type="number" name="permanent_mobile"></td>
+                        </tr>
+                        <tr>
+                            <td>Email ID (Personal):</td>
+                            <td><input type="email" name="present_email"></td>
+                            <td colspan="4"><input type="email" name="permanent_email"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Instant Messaging System ID:</td>
+                            <td><input type="text" name="present_im"></td>
+                            <td colspan="4"><input type="text" name="permanent_im"></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>Passport Details:</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="passport_status" value="available"> Available
+                                <input type="radio" name="passport_status" value="na"> N/A
+                                <input type="radio" name="passport_status" value="not_available"> Not Available
+                                <input type="radio" name="passport_status" value="applied"> Applied
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Number:</td>
+                            <td><input type="text" name="passport_number"></td>
+                        </tr>
+                        <tr>
+                            <td>Date Of Issue:</td>
+                            <td><input type="date" name="passport_issue_date"></td>
+                        </tr>
+                        <tr>
+                            <td>Date of Expiry:</td>
+                            <td><input type="date" name="passport_expiry_date"></td>
+                        </tr>
+                        <tr>
+                            <td>Place Issue:</td>
+                            <td><input type="text" name="passport_place_issue"></td>
+                        </tr>
+                    </table>
+                    <div class="lastinformation">
+                        <div class="left">
+                            <p>MNJ Software Ver: 1.5</p>
+                        </div>
+                        <div class="center">
+                            <img src="https://www.mnjsoftware.com/assets/images/logo/logo-blu.png" alt="MNJ Logo">
+                        </div>
+                        <div class="right">
+                            <p>Page 1 of 9</p>
+                            <p>HR Dept. - FORMS - Application Form.</p>
+                        </div>
+                    </div>
+                    <button type="submit" id="hiddenSubmit" style="display: none;"></button>
+                </form>
+            </div>
+        </div> 
+        <script>
+    let form = document.getElementById("myform");
+    let inputs = form.querySelectorAll("input");
+
+    inputs.forEach(input => {
+        input.addEventListener("blur", function(){ 
+            let allFilled = true;
+            
+            inputs.forEach(inp => {
+                if (inp.value.trim() === "") {
+                    allFilled = false;
+                }
+            });
+
+            if (allFilled) {
+                document.getElementById("hiddenSubmit").click(); 
+            }
+        });
+    });
+
+        </script>
+    
+</body>
+</html>
