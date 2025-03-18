@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+    <style>
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding-top: 100px; 
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; 
+        padding: 10px 20px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #007bff; 
+        color: white;
+    }
+
+    .header .image {
+        width: 70px;
+        height: 70px;
+    }
+
+    .header #heading {
+        flex-grow: 1; 
+        text-align: center;
+        font-size: 44px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        margin: 0;
+    }
+
+    .container {
+        position: fixed;
+        top: 150px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        background-color: lightgrey;
+        border-radius: 8px;
+        padding: 40px 25px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container input {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+    }
+
+    .container button {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: blue;
+        cursor: pointer;
+        font-size: 16px;
+        color: white;
+    }
+
+    button:hover {
+        background-color: green;
+    }
+
+    .container input:focus {
+        border: 2px solid blue;
+        outline: none;
+    }
+
+    .some_content {
+        position: fixed;
+        top: 370px; 
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 16px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: bold;
+    }
+   
+
+    .some_content a:hover{
+        color: orangered;
+    }
+
+    .last_content {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        background-color: #007bff; 
+        color: white;
+        text-align: center;
+        font-size: 16px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        padding: 10px 0;
+    }
+    ul li{
+        list-style-type: none;
+        text-align: center;
+        color: orangered;
+        font-size: 24px;
+    }
+
+    .last_content a {
+    transition: 0.3s ease; 
+}
+
+.last_content a:hover {
+    color: orangered ; 
+    text-shadow: 0 0 25px orangered, 0 0 50px orangered;
+    transform: scale(1.1); 
+}
+
+    </style>
+</head>
+<body>
+    <div class="entire">
+        <div class="header">
+            <img src="{% static 'images/logo.png' %}" alt="logo" class="image">
+            <h2 id="heading">Job Application Tracker</h2>
+        </div>
+    
+        <form class="container" action="{% url 'index' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="l_username" placeholder="Username">
+            <input type="password" name="l_pass_word" placeholder="Password">
+            <button type="submit" class="btn" name="login" >LogIn</button>
+        </form>
+        <p class="some_content">Don't have an account? <a href="{% url 'register' %}">Register now</a></p>
+
+        {% if messages %}
+        <ul>
+         {% for message in messages %}
+           <li> {{ message }}</li> 
+         {% endfor %}  
+        </ul>
+     {% endif %}
+
+        <footer>
+            <p class="last_content">Made By <a href="http://www.linkedin.com/in/prasanna-makani-70534b348">Prasanna</a></p>
+        </footer>
+    </div>
+   
+</body>
+</html>

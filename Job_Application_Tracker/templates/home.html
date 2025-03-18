@@ -1,0 +1,323 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        
+        .header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #007bff;
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            color: white;
+        }
+
+        .image {
+            border-radius: 50%;
+        }
+
+        .logout {
+            background: red;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .logout a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        .logout:hover{
+            background-color: #28a745;
+
+        }
+
+       
+        .company {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: white;
+            padding: 20px;
+            position: fixed;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .pair {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pair label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .pair input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        .btn {
+            margin-top: 150px;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            position: fixed;
+            top: 80px;
+        }
+        .btn:hover{
+            background-color: orangered;
+        }
+
+        
+        .hidden {
+            width: 80%;
+            margin-top: 320px;
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: auto;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #007bff;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        
+        .delete-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+       
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+       
+
+        .last_content a {
+    transition: 0.3s ease;
+}
+
+.last_content a:hover {
+    color: orangered; 
+    text-shadow: 0 0 25px orangered, 0 0 50px orangered;
+    transform: scale(1.1); 
+}
+
+        ul li{
+        text-align: center;
+        color: orangered;
+        font-size: 24px;
+    }
+
+        
+        @media (max-width: 768px) {
+            .company {
+                flex-direction: column;
+                align-items: center;
+                width: 90%;
+            }
+            .pair input {
+                width: 100%;
+            }
+            .btn {
+                top: 320px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .hidden {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'images/logo.png' %}" alt="logo" class="image" width="70" height="70">
+        <h2 id="heading">Job Application Tracker</h2>
+        <button class="logout"><a href="{% url 'index' %}">LogOut</a></button>
+    </div>
+
+
+<form id="applicationForm" action="{% url 'home' %}" method="POST">
+    {% csrf_token %}
+    <div class="company">
+        <div class="pair">
+            <label for="Company">Company:</label>
+            <input list="companies" name="Company" id="Company" placeholder="e.g Google">
+            <datalist id="companies">
+                <option value="Google">
+                <option value="Microsoft">
+                <option value="Amazon">
+                <option value="Facebook">
+                <option value="Apple">
+            </datalist>
+        </div>
+        <div class="pair">
+            <label for="Position">Position:</label>
+            <input list="positions" name="Position" id="Position" placeholder="e.g Fronted Developer">
+            <datalist id="positions">
+                <option value="Frontend Developer">
+                <option value="Data Analyst">
+                <option value="Backend Developer">
+                <option value="Test Engineer">
+                <option value="C/C++/Java/Python Developer">
+            </datalist>
+        </div>
+        <div class="pair">
+            <label for="CTC">CTC:</label>
+            <input type="number" name="Ctc" id="CTC" placeholder="e.g 25,000">
+        </div>
+        <div class="pair">
+            <label for="Date">Date:</label>
+            <input type="date" name="Date" id="Date">
+        </div>
+    </div>
+    <button type="submit" class="btn" onclick="addApplication()">Add Application</button>
+</form>
+
+    <div class="hidden" id="applicationtable">
+        <h3>Applications</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Position</th>
+                    <th>CTC</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="appTableBody">
+            </tbody>
+        </table>
+    </div>
+    
+    <footer>
+        <p class="last_content">Made By <a href="http://www.linkedin.com/in/prasanna-makani-70534b348">Prasanna</a></p>
+    </footer>
+<script>
+document.getElementById("applicationForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    let company = document.getElementById("Company").value.trim();
+    let position = document.getElementById("Position").value.trim();
+    let ctc = document.getElementById("CTC").value.trim();
+    let date = document.getElementById("Date").value.trim();
+
+    if (company === "" || position === "" || ctc === "" || date === "") {
+        alert("Please fill all the fields.");
+        return;
+    }
+
+    let tableBody = document.getElementById("appTableBody");
+
+    let newRow = document.createElement("tr");
+    newRow.innerHTML = `
+        <td>${company}</td>
+        <td>${position}</td>
+        <td>${ctc}</td>
+        <td>${date}</td>
+        <td>
+            <select>
+                <option>Applied</option>
+                <option>Interview</option>
+                <option>Pending</option>
+                <option>Rejected</option>
+            </select>
+        </td>
+        <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
+    `;
+
+    tableBody.appendChild(newRow);
+
+    // Clear input fields
+    document.getElementById("Company").value = "";
+    document.getElementById("Position").value = "";
+    document.getElementById("CTC").value = "";
+    document.getElementById("Date").value = "";
+
+    
+    document.getElementById("applicationtable").style.display = "block";
+});
+
+
+function deleteRow(button) {
+    let row = button.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+}
+</script>
+</body>
+</html>
